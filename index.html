@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Text Field and Button Example</title>
+  <!-- use bootstrap -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  
+    form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+  
+    input[type="text"] {
+      font-size: 16px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  
+    button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      align-items: center;
+  justify-content: center;
+    }
+  
+    button:hover {
+      background-color: #46a049;
+    }
+  
+    #result {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 20px;
+      align-items: center;
+  justify-content: center;
+    }
+  
+    #copy-button {
+      font-size: 16px;
+      padding: 10px 20px;
+      background-color: #2196f3;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 20px;
+        align-items: center;
+    justify-content: center;
+    }
+  
+    #copy-button:hover {
+      background-color: #0b7dda;
+      align-items: center;
+  justify-content: center;
+    }
+  </style>
+  
+</head>
+<body>
+  <form>
+    <input type="text" id="text-field">
+    <button type="button" id="button">Add https://</button>
+  </form>
+  <br>
+  <div id="result"></div>
+  <button id="copy-button">Copy</button>
+  <br>
+  <script>
+    const button = document.getElementById("button");
+    const textField = document.getElementById("text-field");
+    const resultDiv = document.getElementById("result");
+    const copyButton = document.getElementById("copy-button");
+
+    button.addEventListener("click", () => {
+      resultDiv.innerText = "https://" + textField.value;
+    });
+
+    copyButton.addEventListener("click", () => {
+      const range = document.createRange();
+      range.selectNode(resultDiv);
+      window.getSelection().addRange(range);
+      document.execCommand("copy");
+      window.getSelection().removeAllRanges();
+    });
+  </script>
+</body>
+</html>
